@@ -1,23 +1,5 @@
-<?php
-
-require 'dados.php';
-
-$id = $_REQUEST['id'];
-
-
-$filtrado = array_filter($livros, function ($book) use ($id) {
-
-    return $book['id'] == (int)$id;
-});
-
-$livroSelecionado = array_pop($filtrado);
-
-
-?>
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 
 <head>
     <meta charset="UTF-8">
@@ -59,6 +41,11 @@ $livroSelecionado = array_pop($filtrado);
     </header>
 
     <main class="mx-auto max-w-screen-lg space-y-6">
+
+        <h1 class="font-bold text-lg mt-6">Explorar</h1>
+
+
+        <?php require "views/{$view}.view.php";  ?>
 
 
     </main>
