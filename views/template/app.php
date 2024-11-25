@@ -24,14 +24,14 @@
                     <a class="text-lime-600" href="/">Explorar</a>
                 </li>
                 <li>
-                    <a class="hover:underline" href="/meus-livros.php">Meus Livros</a>
+                    <a class="hover:underline" href="/meus-livros">Meus Livros</a>
                 </li>
 
             </ul>
 
             <ul>
                 <li>
-                    <a class="hover:underline" href="/login.php">Fazer Login</a>
+                    <a class="hover:underline" href="/login">Fazer Login</a>
                 </li>
             </ul>
 

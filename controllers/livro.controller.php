@@ -13,6 +13,4 @@ $filtrado = array_filter($livros, function ($book) use ($id) {
 
 $livroSelecionado = array_pop($filtrado);
 
-$view = 'livro';
-
-require "views/template/app.php";
+view('livro', ['livroSelecionado' => $livroSelecionado]);
