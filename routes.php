@@ -4,13 +4,19 @@
 
 $controller = 'index';
 
-if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/') {
 
-    $uri = str_replace('/', '', $_SERVER['REQUEST_URI']);
+if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/Book-Store/') {
+
+    $uri = str_replace('/Book-Store/', '', $_SERVER['REQUEST_URI']);
     $linkUri = explode('?', $uri);
 
     $controller = $linkUri[0];
+
+}else{
+    $controller = 'index';
 }
+
+
 
 if (!file_exists("controllers/{$controller}.controller.php")) {
 

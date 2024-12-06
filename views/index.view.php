@@ -25,7 +25,7 @@
                 </div>
                 <div class="space-y-1">
 
-                    <a href="/livro?id=<?= $livro['id'] ?>" class="font-semibold hover:underline">
+                    <a href="/Book-Store/livro?id=<?= $livro['id'] ?>" class="font-semibold hover:underline">
                         <?= $livro['titulo']  ?>
                     </a>
                     <div class="text-xs italic">

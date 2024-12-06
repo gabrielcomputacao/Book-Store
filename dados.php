@@ -1,6 +1,13 @@
 <?php
 
-$livros = [
+
+
+
+
+
+
+
+/* $livros = [
     [
         'id' => 1,
         'titulo' => 'O Senhor dos Anéis',
@@ -37,4 +44,4 @@ $livros = [
         'autor' => 'Markus Zusak',
         'descricao' => 'Uma história emocionante sobre uma jovem judia que encontra conforto e esperança nos livros durante a Segunda Guerra Mundial.'
     ]
-];
+]; */
