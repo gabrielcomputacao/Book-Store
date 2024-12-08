@@ -4,19 +4,11 @@
 
 $db = new DB();
 
-$livros = $db->returnLivros();
+$numberId = explode('=', $_SERVER['REQUEST_URI']);
 
-echo "URI: {$_SERVER['REQUEST_URI']}<br>";
-var_dump($_REQUEST);
+$id = $numberId[1];
 
-$id = $_REQUEST['id'];
+$filtrado = $db->livro($id);
 
 
-$filtrado = array_filter($livros, function ($book) use ($id) {
-
-    return $book['id'] == (int)$id;
-});
-
-$livroSelecionado = array_pop($filtrado);
-
-view('livro', ['livroSelecionado' => $livroSelecionado]);
+view('livro', ['livroSelecionado' => $filtrado]);

@@ -25,11 +25,11 @@
                 </div>
                 <div class="space-y-1">
 
-                    <a href="/Book-Store/livro?id=<?= $livro['id'] ?>" class="font-semibold hover:underline">
-                        <?= $livro['titulo']  ?>
+                    <a href="/Book-Store/livro?id=<?= $livro->id ?>" class="font-semibold hover:underline">
+                        <?= $livro->titulo  ?>
                     </a>
                     <div class="text-xs italic">
-                        <?= $livro['autor'] ?>
+                        <?= $livro->autor ?>
                     </div>
                     <div class="italic text-xs">
                         Avaliação
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="text-sm mt-2">
-                <?= $livro['descricao'] ?>
+                <?= $livro->descricao ?>
             </div>
 
         </div>

@@ -3,5 +3,5 @@
 ?>
 
 <div>
-    <?= $livroSelecionado['titulo']; ?>
+    <?= $livroSelecionado->descricao; ?>
 </div>

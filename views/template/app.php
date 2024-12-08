@@ -21,7 +21,7 @@
 
             <ul class="flex space-x-4">
                 <li>
-                    <a class="text-lime-600" href="/">Explorar</a>
+                    <a class="text-lime-600" href="/Book-Store/">Explorar</a>
                 </li>
                 <li>
                     <a class="hover:underline" href="/meus-livros">Meus Livros</a>
