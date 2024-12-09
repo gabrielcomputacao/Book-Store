@@ -15,17 +15,28 @@ class DB
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function returnLivros()
+    public function returnLivros($pesquisa = null)
     {
 
         try {
 
-            $sql = "Select * from livros";
-
+            $sql = '';
+            if (!isset($pesquisa)) {
+                $sql = "select * from livros";
+            } else {
+                $sql = "select * from livros
+                where
+                titulo like '%$pesquisa%'
+                or descricao like '%$pesquisa%'
+                or autor like '%$pesquisa%'
+            ";
+            }
 
             $query = $this->db->query($sql);
 
             $items =  $query->fetchAll();
+
+
 
             return array_map(fn($item) => Livro::make($item), $items);
         } catch (\Throwable $th) {

@@ -4,16 +4,24 @@
 
 $controller = 'index';
 
+$urlParts =  parse_url($_SERVER['REQUEST_URI']);
 
-if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/Book-Store/') {
+$queryParams = [];
+
+if (isset($urlParts['query'])) {
+    parse_str($urlParts['query'], $queryParams);
+}
+
+
+if (
+    isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/Book-Store/'
+    && isset($queryParams['id'])
+) {
 
     $uri = str_replace('/Book-Store/', '', $_SERVER['REQUEST_URI']);
     $linkUri = explode('?', $uri);
 
     $controller = $linkUri[0];
-
-}else{
-    $controller = 'index';
 }
 
 
