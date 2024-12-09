@@ -20,21 +20,38 @@ class DB
 
         try {
 
-            $sql = '';
+
+            $prepare = '';
+
             if (!isset($pesquisa)) {
-                $sql = "select * from livros";
+
+                $prepare = $this->db->prepare("select * from livros");
+
+                $prepare->execute();
             } else {
-                $sql = "select * from livros
+                /*  $sql = "select * from livros
                 where
                 titulo like '%$pesquisa%'
                 or descricao like '%$pesquisa%'
                 or autor like '%$pesquisa%'
-            ";
+            "; */
+
+                // metodo para preparar pesquisas para o banco de dados
+
+                $prepare = $this->db->prepare("select * from livros
+                where
+                titulo like :pesquisa
+                or descricao like :pesquisa
+                or autor like :pesquisa
+            ");
+                $prepare->bindValue(':pesquisa', "%$pesquisa%");
+
+                $prepare->execute();
             }
 
-            $query = $this->db->query($sql);
 
-            $items =  $query->fetchAll();
+
+            $items =  $prepare->fetchAll();
 
 
 
