@@ -2,7 +2,7 @@
 
 // Model
 
-$db = new DB();
+$db = new DB($config);
 
 $numberId = explode('=', $_SERVER['REQUEST_URI']);
 

@@ -7,6 +7,8 @@ class Livro
     public $titulo;
     public $autor;
     public $descricao;
+    public $ano_lancamento;
+    public $id_usuarios;
 
 
     // Funcao que pode ser chamada , sem precisa ser instanciado um objeto

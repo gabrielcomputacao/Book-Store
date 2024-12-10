@@ -1,6 +1,6 @@
 <?php
 
-$db = new DB();
+$db = new DB($config);
 
 $partsUrl = parse_url($_SERVER['REQUEST_URI']);
 
@@ -12,11 +12,16 @@ if (isset($partsUrl['query'])) {
     parse_str($partsUrl['query'], $queryStringPesquisar);
 }
 
-
 if (isset($queryStringPesquisar['pesquisar'])) {
-    $livros = $db->returnLivros($queryStringPesquisar['pesquisar']);
+    $valuePesquisar = $queryStringPesquisar['pesquisar'];
+    $livros = $db->query("select * from livros
+                where
+                titulo like :pesquisa
+                or descricao like :pesquisa
+                or autor like :pesquisa
+            ", Livro::class, ['pesquisa' => "%$valuePesquisar%"]);
 } else {
-    $livros = $db->returnLivros();
+    $livros = $db->query("select * from livros", Livro::class)->fetchAll();
 }
 
 

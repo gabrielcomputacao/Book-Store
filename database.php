@@ -6,15 +6,29 @@ class DB
 
     private $db;
 
-    public function __construct()
+    public function __construct($config)
     {
-
-        require 'credentials.php';
-
-        $this->db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+        $this->db = new PDO("mysql:host=" . $config['host'] . ";dbname=" . $config['dbname'] . ";charset=utf8", $config['username'], $config['password']);
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
+    // so esta usando esse que serve para filtrar, a regra de negocio fica dentro do contorller
+    public function query($query, $class = null, $params = [])
+    {
+
+        $prepare = $this->db->prepare($query);
+
+        if ($class) {
+
+            $prepare->setFetchMode(PDO::FETCH_CLASS, $class);
+        }
+
+        $prepare->execute($params);
+
+        return $prepare;
+    }
+
+    // nao esta usando esse
     public function returnLivros($pesquisa = null)
     {
 
@@ -61,17 +75,18 @@ class DB
         }
     }
 
+    // nao esta usando esse
     public function livro($id = null)
     {
 
-        $sql = "SELECT * from livros";
+        $prepare = $this->db->prepare("SELECT * from livros where id = :id");
 
-        $sql .= " where id =" . $id;
+        $prepare->bindValue(":id", "$id");
 
-        $query = $this->db->query($sql);
+        $prepare->setFetchMode(PDO::FETCH_CLASS, Livro::class);
+        $prepare->execute();
 
-        $items = $query->fetchAll();
 
-        return array_map(fn($item) => Livro::make($item), $items)[0];
+        return  $prepare->fetch();
     }
 }
