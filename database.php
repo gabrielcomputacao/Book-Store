@@ -90,3 +90,6 @@ class DB
         return  $prepare->fetch();
     }
 }
+
+
+$database = new DB($config);

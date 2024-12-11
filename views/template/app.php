@@ -31,7 +31,7 @@
 
             <ul>
                 <li>
-                    <a class="hover:underline" href="/login">Fazer Login</a>
+                    <a class="hover:underline" href="/Book-Store/login">Fazer Login</a>
                 </li>
             </ul>
 

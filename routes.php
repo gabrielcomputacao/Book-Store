@@ -15,13 +15,19 @@ if (isset($urlParts['query'])) {
 
 if (
     isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] !== '/Book-Store/'
-    && isset($queryParams['id'])
+    || isset($queryParams['id'])
 ) {
-
     $uri = str_replace('/Book-Store/', '', $_SERVER['REQUEST_URI']);
-    $linkUri = explode('?', $uri);
 
-    $controller = $linkUri[0];
+    if (isset($queryParams['id']) || isset($queryParams['msg'])) {
+
+
+        $linkUri = explode('?', $uri);
+
+        $controller = $linkUri[0];
+    } else {
+        $controller = $uri;
+    }
 }
 
 
