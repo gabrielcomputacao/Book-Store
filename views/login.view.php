@@ -31,9 +31,12 @@
 
         <form class="px-4 py-4 space-y-4" method="POST" action="/Book-Store/register">
 
-            <div class="border-green-800 bg-green-900 text-green-400 px-4 py-2 rounded-md border-2">
+            <?php if (isset($message)): ?>
+                <div class="border-green-800 bg-green-900 text-green-400 px-4 py-2 rounded-md border-2">
+                    <?= $message  ?>
+                </div>
 
-            </div>
+            <?php endif; ?>
 
             <div class="flex flex-col">
                 <label class="text-stone-400 ml-2 mb-1" for="">Nome</label>
