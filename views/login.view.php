@@ -29,11 +29,28 @@
 
         <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Login</h1>
 
-        <form class="px-4 py-4 space-y-4" method="POST" action="/Book-Store/register">
+        <form class="px-4 py-4 space-y-4" method="POST" action="/register">
 
             <?php if (isset($message)): ?>
                 <div class="border-green-800 bg-green-900 text-green-400 px-4 py-2 rounded-md border-2">
                     <?= $message  ?>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['validacoes']) && sizeof($_SESSION['validacoes'])): ?>
+                <div class="border-red-800 bg-red-900 text-red-400 px-4 py-2 rounded-md border-2">
+                    <ul>
+                        <h3 class="text-xl">Seu preencimento foi incontrado esses erros:</h3>
+                        <br>
+                        <?php foreach ($_SESSION['validacoes'] as $validations): ?>
+                            <li>
+                                <?= $validations ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+
+
                 </div>
 
             <?php endif; ?>
