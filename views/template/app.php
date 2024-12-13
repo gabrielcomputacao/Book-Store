@@ -31,7 +31,18 @@
 
             <ul>
                 <li>
-                    <a class="hover:underline" href="/Book-Store/login">Fazer Login</a>
+                    <?php if (isset($_SESSION['auth'])): ?>
+
+                        <a class="hover:underline" href="/Book-Store/logout">
+
+                            <?= $_SESSION['auth']->nome ?>
+                        </a>
+
+                    <?php else: ?>
+
+                        <a class="hover:underline" href="/Book-Store/login">Fazer Login</a>
+
+                    <?php endif; ?>
                 </li>
             </ul>
 
