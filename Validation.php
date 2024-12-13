@@ -1,0 +1,78 @@
+<?php
+
+class Validation
+{
+
+    public $validations;
+
+    public static function toValidate($rules, $data)
+    {
+
+        $validationFields = new self;
+
+
+        foreach ($rules as $field => $rulesField) {
+
+            foreach ($rulesField as $rule) {
+
+                if ($rule === 'confirmed') {
+                    $validationFields->$rule($field, $data['confirmemail']);
+                } else if ($rule == 'min') {
+                    $validationFields->$rule(8, $field, $data[$field]);
+                } else if ($rule == 'strong') {
+                    $validationFields->$rule('*', $field, $data[$field]);
+                } else {
+
+                    $validationFields->$rule($field, $data[$field]);
+                }
+            }
+        }
+
+        return $validationFields;
+    }
+
+
+    private function required($field, $value)
+    {
+
+        if (strlen($value) == 0) {
+            $this->validations[] = "The $field is required";
+        }
+    }
+
+
+    private function email($field, $value)
+    {
+        if (! filter_var($value, FILTER_VALIDATE_EMAIL)) {
+            $this->validations[] = 'invalid email';
+        }
+    }
+
+    private function confirmed($field, $confirmedField)
+    {
+        if ($field != $confirmedField) {
+            $this->validations[] = 'Confirmation email is different';
+        }
+    }
+
+    private function min($min, $field, $value)
+    {
+        if (strlen($value) > $min) {
+            $this->validations[] = "The $field must have $min character";
+        }
+    }
+
+    private function strong($specialCharacter, $field, $value)
+    {
+        if (! strpbrk($value, $specialCharacter)) {
+            $this->validations[] = "The $field must is strong";
+        }
+    }
+
+
+    public function notPass()
+    {
+        $_SESSION['validacoes'] = $this->validations;
+        return sizeof($this->validations) > 0;
+    }
+}

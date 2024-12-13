@@ -69,7 +69,7 @@
             </div>
             <div class="flex flex-col">
                 <label class="text-stone-400 ml-2 mb-1" for="">Confirme seu Email</label>
-                <input name="confirmemail" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1" type="email"
+                <input required name="confirmemail" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1" type="email"
                     placeholder="Email">
 
             </div>
