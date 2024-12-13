@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     );
 
 
-
-    header("location: /login?msg=Registrado com sucesso!");
+    flash()->push('message', 'Cadastrado com sucesso!');
+    header("location: /login");
     exit();
 }

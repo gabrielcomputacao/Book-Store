@@ -31,21 +31,15 @@
 
         <form class="px-4 py-4 space-y-4" method="POST" action="/register">
 
-            <?php if (isset($message)): ?>
-                <div class="border-green-800 bg-green-900 text-green-400 px-4 py-2 rounded-md border-2">
-                    <?= $message  ?>
-                </div>
-
-            <?php endif; ?>
-
-            <?php if (isset($_SESSION['validacoes']) && sizeof($_SESSION['validacoes'])): ?>
+            <!-- O php já confere se a variavel ou retorno da funcao e verdadeira e se for coloca dentro de uma variavel criadad dentro do if -->
+            <?php if ($validations = flash()->get('validation')): ?>
                 <div class="border-red-800 bg-red-900 text-red-400 px-4 py-2 rounded-md border-2">
                     <ul>
                         <h3 class="text-xl">Seu preencimento foi incontrado esses erros:</h3>
                         <br>
-                        <?php foreach ($_SESSION['validacoes'] as $validations): ?>
+                        <?php foreach ($validations as $validation): ?>
                             <li>
-                                <?= $validations ?>
+                                <?= $validation ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>

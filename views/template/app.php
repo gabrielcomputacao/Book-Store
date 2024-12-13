@@ -53,6 +53,14 @@
 
     <main class="mx-auto max-w-screen-lg space-y-6">
 
+        <?php if ($message = flash()->get('message')): ?>
+
+            <div class="border-green-800 bg-green-900 text-green-400 px-4 py-2 rounded-md border-2">
+                <?= $message ?>
+            </div>
+
+        <?php endif; ?>
+
         <h1 class="font-bold text-lg mt-6">Explorar</h1>
 
 

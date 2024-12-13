@@ -16,13 +16,12 @@ class Validation
             foreach ($rulesField as $rule) {
 
                 if ($rule === 'confirmed') {
-                    $validationFields->$rule($field, $data['confirmemail']);
+                    $validationFields->$rule($data[$field], $data['confirmemail']);
                 } else if ($rule == 'min') {
-                    $validationFields->$rule(8, $field, $data[$field]);
+                    $validationFields->$rule(6, $field, $data[$field]);
                 } else if ($rule == 'strong') {
                     $validationFields->$rule('*', $field, $data[$field]);
                 } else {
-
                     $validationFields->$rule($field, $data[$field]);
                 }
             }
@@ -57,7 +56,8 @@ class Validation
 
     private function min($min, $field, $value)
     {
-        if (strlen($value) > $min) {
+        echo $value;
+        if (strlen($value) < $min) {
             $this->validations[] = "The $field must have $min character";
         }
     }
@@ -72,7 +72,9 @@ class Validation
 
     public function notPass()
     {
-        $_SESSION['validacoes'] = $this->validations;
+
+        flash()->push('validation', $this->validations);
+
         return sizeof($this->validations) > 0;
     }
 }
