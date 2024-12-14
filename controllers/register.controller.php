@@ -1,15 +1,17 @@
 <?php
 
+
+
 require 'Validation.php';
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
 
     $validation = Validation::toValidate([
         'name' => ['required'],
         'email' => [
             'required',
+            'unique',
             'email',
             'confirmed',
         ],
@@ -42,3 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("location: /login");
     exit();
 }
+
+header("location: /login");
+exit();

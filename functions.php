@@ -40,3 +40,12 @@ function flash()
 
     return new Flash;
 }
+
+function config()
+{
+
+    require 'credentials.php';
+
+
+    return $config;
+}

@@ -21,7 +21,10 @@ class Validation
                     $validationFields->$rule(6, $field, $data[$field]);
                 } else if ($rule == 'strong') {
                     $validationFields->$rule('*', $field, $data[$field]);
+                } else if ($rule == 'unique') {
+                    $validationFields->$rule('usuarios', $field, $data[$field]);
                 } else {
+                    var_dump($field);
                     $validationFields->$rule($field, $data[$field]);
                 }
             }
@@ -69,6 +72,26 @@ class Validation
         }
     }
 
+    private function unique($table, $field, $value)
+    {
+        if (strlen($value) < 0) {
+            return;
+        }
+
+        $db = new DB(config());
+
+        $result = $db->query(
+            "select * from $table where email = :value",
+            null,
+            [
+                "value" => $value,
+            ]
+        )->fetch();
+
+        if ($result) {
+            $this->validations[] = "The email is used                   ";
+        }
+    }
 
     public function notPass()
     {
