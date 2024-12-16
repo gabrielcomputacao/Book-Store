@@ -11,19 +11,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $user = $database->query("
     select * from usuarios where
-    email = :email and 
-    senha = :password
+    email = :email
     ", User::class, [
         'email' => $email,
-        'password' => $password
     ])->fetch();
 
-    var_dump($user);
 
     if ($user) {
 
+
+        $dataPassword = $user->senha;
+
+        if (! password_verify($password, $dataPassword)) {
+            flash()->push('validation', ['Usuário ou senha estão incorretos.']);
+            header('location: /login');
+            exit();
+        }
+
+
         $_SESSION['auth'] = $user;
-        header('location: /Book-Store');
+        header('location: /Book-Store/');
         exit();
     }
 }

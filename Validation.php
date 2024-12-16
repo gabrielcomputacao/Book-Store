@@ -89,7 +89,7 @@ class Validation
         )->fetch();
 
         if ($result) {
-            $this->validations[] = "The email is used                   ";
+            $this->validations[] = "The email is used";
         }
     }
 
