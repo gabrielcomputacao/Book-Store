@@ -1,5 +1,6 @@
 <?php
 
+require 'Validation.php';
 require 'models/Livro.php';
 require 'models/User.php';
 require 'models/Avaliacao.php';
