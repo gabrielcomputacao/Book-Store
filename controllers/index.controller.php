@@ -22,9 +22,9 @@ if (isset($queryStringPesquisar['pesquisar'])) {
                 or autor like :pesquisa
             ", Livro::class, ['pesquisa' => "%$valuePesquisar%"]);
 } else {
-    $livros = $database->query("select * from livros", Livro::class)->fetchAll();
+    $livros = Livro::all();
 }
 
 
 
-view('index', ['livros' => $livros]);
+view('index', ['books' => $livros]);

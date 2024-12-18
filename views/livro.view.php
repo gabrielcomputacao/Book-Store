@@ -14,33 +14,8 @@ $finalNotes = str_repeat("\u{2B50}", $sumNotas);
 
 ?>
 
-<div>
-    <div class="bg-stone-900 p-2 rounded border-2 ">
-        <div class=" flex">
+<?php require_once "partials/_livro.php" ?>
 
-            <div class="w-1/3">
-                imagem
-            </div>
-            <div class="space-y-1">
-
-                <a href="/Book-Store/livro?id=<?= $livroSelecionado->id ?>" class="font-semibold hover:underline">
-                    <?= $livroSelecionado->titulo  ?>
-                </a>
-                <div class="text-xs italic">
-                    <?= $livroSelecionado->autor ?>
-                </div>
-                <div class="italic text-xs">
-                    <?= $finalNotes ?> ( <?= count($avaliacao); ?> Avaliação)
-                </div>
-
-            </div>
-        </div>
-        <div class="text-sm mt-2">
-            <?= $livroSelecionado->descricao ?>
-        </div>
-
-    </div>
-</div>
 <div>
     <h2 class="text-xl mb-4">Avaliações</h2>
     <div class="grid grid-cols-4 gap-4">
@@ -71,7 +46,7 @@ $finalNotes = str_repeat("\u{2B50}", $sumNotas);
 
 
                         <div class="flex flex-col">
-                            <input type="hidden" name="livro_id" value="<?= $livroSelecionado->id ?>" />
+                            <input type="hidden" name="livro_id" value="<?= $book->id ?>" />
                             <label class="text-stone-400 ml-2 mb-1" for="avaliacao">Avaliação</label>
                             <textarea name="avaliacao" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1" type="text">
                         </textarea>
