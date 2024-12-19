@@ -17,9 +17,16 @@
 
                 <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Cadastre um novo livro</h1>
 
-                <form class="px-4 py-4 space-y-4" action="/Book-Store/livro-criar" method="post">
+                <form class="px-4 py-4 space-y-4" action="/Book-Store/livro-criar" method="post" enctype="multipart/form-data">
 
 
+                    <div class="flex flex-col">
+
+                        <label class="text-stone-400 ml-2 mb-1" for="avaliacao">Imagem</label>
+                        <input name="image" class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1" type="file">
+                        </input>
+
+                    </div>
                     <div class="flex flex-col">
 
                         <label class="text-stone-400 ml-2 mb-1" for="avaliacao">Titulo</label>

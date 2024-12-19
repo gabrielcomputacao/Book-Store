@@ -24,7 +24,7 @@
                     <a class="text-lime-600" href="/Book-Store/">Explorar</a>
                 </li>
                 <li>
-                    <a class="hover:underline" href="/meus-livros">Meus Livros</a>
+                    <a class="hover:underline" href="/Book-Store/meus-livros">Meus Livros</a>
                 </li>
 
             </ul>

@@ -1,13 +1,13 @@
 <?php
-// dd($book);
+
 ?>
 
 <div>
     <div class="bg-stone-900 p-2 rounded border-2 ">
         <div class=" flex">
 
-            <div class="w-1/3">
-                imagem
+            <div class="w-1/3 mr-3">
+                <img src="<?= $book->image ?>" class="w-60 rounded " alt="">
             </div>
             <div class="space-y-1">
 
